@@ -46,7 +46,18 @@
             <div class="modal-body">
                 <!-- The form is placed inside the body of modal -->
                 <form id="loginForm" method="post" class="form-horizontal">
+
                     <div class="form-group">
+                        <label class="col-xs-3 control-label">Email</label>
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control" name="password" ng-model="email"/>
+                        </div>
+                        <div class="col-xs-1">
+                          <i class="fa fa-check fa-2x green" ng-if="checkEmail()"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="register">
                         <label class="col-xs-3 control-label">Username</label>
                         <div class="col-xs-5">
                             <input type="text" class="form-control" name="username" ng-model="username"/>
@@ -76,15 +87,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" ng-show="register">
-                        <label class="col-xs-3 control-label">Email</label>
-                        <div class="col-xs-5">
-                            <input type="text" class="form-control" name="password" ng-model="email"/>
-                        </div>
-                        <div class="col-xs-1">
-                          <i class="fa fa-check fa-2x green" ng-if="checkEmail()"></i>
-                        </div>
-                    </div>
+                    
 
                     <div class="form-group">
                         <div class="col-xs-7 col-xs-offset-2">
@@ -99,4 +102,3 @@
         </div>
     </div>
 </div>
-{{register}}
