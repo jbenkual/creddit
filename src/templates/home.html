@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
-      <h3>Today's Hotness</h3>
+      <h3>Today's Hotness <button class="btn btn-default" data-toggle="modal" data-target="#loginModal">Login</button></h3>
     </div>
   </div>
 </div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-10">
-
       <div class="media" ng-class="{gb: $index %2 === 1}" ng-repeat="post in posts track by $index">
-        <i class="fa fa-arrow-up left"></i>
-        <i class="fa fa-arrow-down left"></i>
+        <i class="fa fa-arrow-up right"></i>
+        <i class="fa fa-arrow-down right"></i>
         <span>{{post.score}}</span>
         <div class="media-left">
           <a href="#">
@@ -19,11 +20,83 @@
           </a>
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><a href="{{post.content}}"> {{post.title}}</a></h4>
-          <p>Submitted {{post.createdAt | date}} by <a href="/user/{{post.author}}">{{post.author}}</a></p>
+          <h4 class="media-heading">
+            <a href="{{post.content}}"> {{post.title}}</a>
+            <span class="subReddit">/r/awesome</span>
+          </h4>
+          <p>Submitted {{convertTime(post.createdAt)}} by <a href="/user/{{post.author}}">{{post.author}}</a></p>
           <p ng-if="post.content.split(' ').length > 1"> {{post.content}}
+            <h5 class="comments">Comments {{post.comments.length}}</h5>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Login</h5>
+            </div>
+
+            <div class="modal-body">
+                <!-- The form is placed inside the body of modal -->
+                <form id="loginForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Username</label>
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control" name="username" ng-model="username"/>
+                        </div>
+                        <div class="col-xs-1">
+                          <i class="fa fa-check fa-2x green" ng-if="checkUsername()"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Password</label>
+                        <div class="col-xs-5">
+                            <input type="password" class="form-control" name="password" ng-model="password"/>
+                        </div>
+                        <div class="col-xs-1">
+                          <i class="fa fa-check fa-2x green" ng-if="checkPass()"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="register">
+                        <label class="col-xs-3 control-label">Confirm Password</label>
+                        <div class="col-xs-5">
+                            <input type="password" class="form-control" name="password" ng-model="password2"/>
+                        </div>
+                        <div class="col-xs-1">
+                          <i class="fa fa-check fa-2x green" ng-if="checkPass2()"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="register">
+                        <label class="col-xs-3 control-label">Email</label>
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control" name="password" ng-model="email"/>
+                        </div>
+                        <div class="col-xs-1">
+                          <i class="fa fa-check fa-2x green" ng-if="checkEmail()"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-7 col-xs-offset-2">
+                            <button type="submit" class="btn btn-primary" ng-click="loginClick()" ng-hide="register">Login</button>
+                            <button type="submit" class="btn btn-primary" ng-click="registerClick()" ng-show="register">Create Account</button>
+                            <button type="submit" class="btn btn-primary" ng-click="register = true" ng-hide="register">Register</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{register}}

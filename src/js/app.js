@@ -2,6 +2,8 @@
 window.app = angular.module('creddit', ['ui.router', 'firebase'])
 
 .config(function($stateProvider, $urlRouterProvider){
+  $urlRouterProvider.otherwise("/", "home")
+
   $stateProvider
   .state('home', { 
     url: '/', 

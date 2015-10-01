@@ -1,0 +1,14 @@
+.subReddit {
+  margin-left: 20px;
+  font-size: 75%;
+  color: blue;
+}
+
+.comments {
+  margin-top: 10px;
+  color: salmon;
+}
+
+.green {
+  color: green;
+}
