@@ -1,11 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
-      <h3>Today's Hotness <button class="btn btn-default" data-toggle="modal" data-target="#loginModal" ng-hide="loggedIn">Login</button></h3>
+      <h3>Today's Hotness 
+        <button class="btn btn-default" data-toggle="modal" data-target="#loginModal" ng-hide="loggedIn">Login</button>
+
+        <button class="btn btn-default" ng-show="loggedIn" ng-click="logout()">Logout</button>
+        </h3>
     </div>
   </div>
 </div>
-
 
 <div class="container">
   <div class="row">
@@ -98,9 +101,9 @@
 
                     <div class="form-group">
                         <div class="col-xs-7 col-xs-offset-2">
-                            <button type="submit" class="btn btn-primary" ng-click="loginClick()" ng-hide="register">Login</button>
-                            <button type="submit" class="btn btn-primary" ng-click="registerClick()" ng-show="register">Create Account</button>
-                            <button type="submit" class="btn btn-primary" ng-click="register = true" ng-hide="register">Register</button>
+                            <button type="button" class="btn btn-primary" ng-click="loginClick()" ng-disable="register" ng-hide="register">Login</button>
+                            <button type="button" class="btn btn-primary" ng-click="registerClick()" ng-show="register">Create Account</button>
+                            <button type="button" class="btn btn-primary" ng-click="register = true" ng-hide="register">Register</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="register = false">Cancel</button>
                         </div>
                     </div>

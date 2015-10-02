@@ -44,8 +44,13 @@ app.controller('HomeCtrl', function($scope, UserService) {
       email: $scope.email,
       password: $scope.password
     }, function(err, user) {
-      $scope.error = err.toString();
-      err || $('#loginModal').modal('hide')
+      if(err) {
+        $scope.error = err.toString();
+      } else {
+        $('#loginModal').modal('hide') ;
+        $scope.loggedIn = true;
+        $scope.error = "";
+      } 
     });
   };
   $scope.registerClick = function() {
@@ -57,9 +62,23 @@ app.controller('HomeCtrl', function($scope, UserService) {
       email: $scope.email,
       password: $scope.password
     }, function(err, user) {
-      $scope.error = err.toString();
-      err || $('#loginModal').modal('hide');
+      if(err) {
+        $scope.error = err.toString();
+      }
+      else {
+        $('#loginModal').modal('hide');
+        UserService.user = user;
+        $scope.register = false;
+        $scope.loginClick();
+        $scope.error = "";
+      }
     });
+  };
+
+  $scope.logout = function () {
+    UserService.logout();
+    $scope.loggedIn = false;
+    $scope.user = {};
   };
 
   
