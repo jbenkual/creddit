@@ -2,6 +2,10 @@
 app.controller('HomeCtrl', function($scope, UserService) {
   $scope.register = false;
   $scope.error = "";
+  $scope.user = UserService.user;
+  if($scope.user) {
+    $scope.loggedIn = true;
+  }
 
   $scope.checkUsername = function() {
     return $scope.username && $scope.username.length > 2;

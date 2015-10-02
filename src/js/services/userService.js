@@ -6,7 +6,8 @@ app.factory("Auth", ["$firebaseAuth",
 ]);
 
 app.service('UserService', function(Auth) {
-  this.user = {};
+  this.user = Auth.$getAuth();
+
   this.create = function(user, cb) {
     Auth.$createUser(user).then(function(userData) {
       this.user = userData;
