@@ -17,6 +17,20 @@
   color: red;
 }
 
+.gray {
+  color: lightgray;
+}
+
 .error {
   font-size: 150%;
+}
+
+.upvote {
+  margin-top: 5px;
+}
+
+.score {
+  font-size: 150%;
+  margin-left: 5px;
+  color: gray;
 }
