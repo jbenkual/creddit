@@ -26,7 +26,7 @@ app.controller('HomeCtrl', function($scope, UserService) {
     subreddit: 'general',
     createdAt: Date.now(),
     score: 1,
-    content: 'https://myavantiservices.files.wordpress.com/2015/02/helloworld.gif',
+    link: 'https://myavantiservices.files.wordpress.com/2015/02/helloworld.gif',
     comments: []
   };
   $scope.posts = [post, post, post];

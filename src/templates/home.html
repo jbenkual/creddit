@@ -27,11 +27,11 @@
         </div>
         <div class="media-body">
           <h4 class="media-heading">
-            <a href="{{post.content}}"> {{post.title}}</a>
+            <a href="{{post.link}}"> {{post.title}}</a>
             <span class="subReddit">/r/awesome</span>
           </h4>
           <p>Submitted {{convertTime(post.createdAt)}} by <a href="/user/{{post.author}}">{{post.author}}</a></p>
-          <p ng-if="post.content.split(' ').length > 1"> {{post.content}}
+          <p ng-if="post.link.split(' ').length > 1"> {{post.link}}
             <h5 class="comments">Comments {{post.comments.length}}</h5>
         </div>
       </div>

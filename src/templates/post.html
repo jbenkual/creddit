@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md6">
+      <div class="form-group">
+        <div class="col-xs-4 col-xs-offset-2 ">
+          <h4>Share your awesome discovery!</h4>
+          <p>
+            <input class="form-control" type="text" placeholder="Why should I click your link?"ng-model="post.title"></input>
+          </p>
+          <p>
+            <input class="form-control" type="text" placeholder="link me to a wondrous place on the internet" ng-model="post.link" ng-hide="post.desc.length > 0"></input>
+          </p>
+          <p>
+            <textarea placeholder="{{placeholderText}}" ng-model="post.desc" class="form-control" rows="5" ng-hide="post.link.length > 0"></textarea>
+          </p>
+          <p>
+            <button class="btn btn-default" ng-click="submitClick()">Submit</button>
+            <span ng-hide="charLimit-post.desc.length > 500" class="charLimit" ng-class="{red: charLimit-desc.length < 0}">    {{charLimit-desc.length}}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

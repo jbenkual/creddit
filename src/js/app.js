@@ -7,7 +7,15 @@ window.app = angular.module('creddit', ['ui.router', 'firebase'])
   $stateProvider
   .state('home', { 
     url: '/', 
-    templateUrl: 'src/templates/home.html',
-    controller: 'HomeCtrl'
+    views: {
+      'top' : {
+        templateUrl: 'src/templates/home.html',
+        controller: 'HomeCtrl'
+      },
+      'post' : { 
+        templateUrl: 'src/templates/post.html',
+        controller: 'PostCtrl'
+      }
+    }
   })
-}); 
+});
