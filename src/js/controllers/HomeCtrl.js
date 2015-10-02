@@ -1,6 +1,7 @@
 
 app.controller('HomeCtrl', function($scope, UserService) {
   $scope.register = false;
+  $scope.error = "";
 
   $scope.checkUsername = function() {
     return $scope.username && $scope.username.length > 2;
@@ -35,11 +36,12 @@ app.controller('HomeCtrl', function($scope, UserService) {
     if(!($scope.checkEmail() && $scope.checkPass())) {
       return;
     }
-    UserService.create({
+    UserService.login({
       email: $scope.email,
       password: $scope.password
     }, function(err, user) {
-      console.log("login", user);
+      $scope.error = err.toString();
+      err || $('#loginModal').modal('hide')
     });
   };
   $scope.registerClick = function() {
@@ -51,7 +53,8 @@ app.controller('HomeCtrl', function($scope, UserService) {
       email: $scope.email,
       password: $scope.password
     }, function(err, user) {
-      console.log("register", user);
+      $scope.error = err.toString();
+      err || $('#loginModal').modal('hide');
     });
   };
 

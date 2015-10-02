@@ -23,14 +23,12 @@ app.service('UserService', function(Auth) {
   };
 
   this.login = function (user, cb) {
-    Auth.$authWithPassword(user, function(error, authData) {
-      if (error) {
-        cb(error);
-        console.log("Login Failed!", error);
-      } else {
-        cb("", authData);
-        console.log("Authenticated successfully with payload:", authData);
-      }
+    Auth.$authWithPassword(user).then( function(authData) {
+      cb("", authData);
+      console.log("Authenticated successfully with payload:", authData);
+    }).catch(function(error) {
+      cb(error);
+      console.log("Login Failed!", error);
     });
   };
 });

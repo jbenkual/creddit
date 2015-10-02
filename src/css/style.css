@@ -12,3 +12,11 @@
 .green {
   color: green;
 }
+
+.red {
+  color: red;
+}
+
+.error {
+  font-size: 150%;
+}
