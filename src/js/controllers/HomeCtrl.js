@@ -7,19 +7,6 @@ app.controller('HomeCtrl', function($scope, UserService) {
     $scope.loggedIn = true;
   }
 
-  $scope.checkUsername = function() {
-    return $scope.username && $scope.username.length > 2;
-  };
-  $scope.checkPass = function() {
-    return $scope.password && $scope.password.length > 4 && $scope.password !== $scope.username;
-  };
-  $scope.checkPass2 = function () {
-    return $scope.password2 && $scope.password2.length > 0 && $scope.password === $scope.password2;
-  };
-  $scope.checkEmail = function() {
-    return $scope.email && $scope.email.length > 4 && $scope.email.indexOf('@') > 0 && $scope.email.indexOf('.') > 0;
-  };
-
   var post = {
     title: 'Hello world',
     author: 'RoboCade',
@@ -36,13 +23,10 @@ app.controller('HomeCtrl', function($scope, UserService) {
   };
 
 
-  $scope.loginClick = function() {
-    if(!($scope.checkEmail() && $scope.checkPass())) {
-      return;
-    }
+  $scope.loginClick = function(data) {
     UserService.login({
-      email: $scope.email,
-      password: $scope.password
+      email: data.email,
+      password: data.password
     }, function(err, user) {
       if(err) {
         $scope.error = err.toString();
@@ -53,14 +37,11 @@ app.controller('HomeCtrl', function($scope, UserService) {
       } 
     });
   };
-  $scope.registerClick = function() {
-    if(!($scope.checkUsername() && $scope.checkPass() && $scope.checkPass2() && $scope.checkEmail())) {
-      return;
-    }
+  $scope.registerClick = function(data) {
     UserService.create({
-      username: $scope.username,
-      email: $scope.email,
-      password: $scope.password
+      username: data.username,
+      email: data.email,
+      password: data.password
     }, function(err, user) {
       if(err) {
         $scope.error = err.toString();
